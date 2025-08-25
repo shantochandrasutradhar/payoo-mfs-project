@@ -1,13 +1,31 @@
+// Re-useable function create
+
+function getInputValueNumber (id){
+    const inputField = document.getElementById(id)
+    const inputFieldValue = inputField.value
+    const inputFieldValueNumber = parseInt(inputFieldValue)  //parseInt thakle
+    return inputFieldValueNumber;
+}
+
+function getInputValue (id){
+    const inputField = document.getElementById(id)
+    const inputFieldValue = inputField.value     // parseInt na thakle
+    return inputFieldValue;
+}
+
+
 // add money btn section
 
 document.getElementById('add-money-btn').addEventListener('click',function(e){
      e.preventDefault()
     //console.log('add money button connect')
     const pinNumber = 1234
-    const bank = document.getElementById('bank').value 
-    const accountNumber = document.getElementById('account-number').value 
-    const amount = parseInt( document.getElementById('add-amount').value)
-    const pin = parseInt(document.getElementById('add-pin').value)
+    
+    const bank = getInputValue ('bank') 
+    const accountNumber = getInputValue('account-number')
+    const amount = getInputValueNumber ('add-amount')
+    const pin = getInputValueNumber ('add-pin')
+
     //console.log(bank, accountNumber,amount,pin);
       if(accountNumber.length < 11){
         alert('please vailid account number')
@@ -30,12 +48,14 @@ document.getElementById('withdraw-button').addEventListener('click',function(e){
     e.preventDefault()
     //console.log('withdraw button clicked')
     const securityPin = 12345
-    const agentNumber = document.getElementById('agent-number').value
-    const amount = parseInt(document.getElementById('withdraw-amount').value)
-    const withdwawPin = parseInt(document.getElementById('pin-number').value)
+    
+    const agentNumber =  getInputValue ('agent-number')
+    const amount = getInputValueNumber('withdraw-amount')
+    const withdwawPin = getInputValueNumber('pin-number')
+
     //console.log(agentNumber,amount,withdwawPin)
      if(agentNumber.length < 11){
-        alert('please vailid account number')
+        alert('please vailid agent number')
         return;
     }
     if(withdwawPin !== securityPin){
@@ -55,9 +75,7 @@ document.getElementById('withdraw-button').addEventListener('click',function(e){
 
 
 
-
-
-// toggle features section here
+// Toggle features section here
 
 // for addmoney
 document.getElementById('add-button').addEventListener('click',function(){
